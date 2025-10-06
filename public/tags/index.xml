@@ -6,8 +6,57 @@
     <description>Recent content in Tags on InvestMuse Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Sep 2025 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Sep 2025 10:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gold</title>
+      <link>http://localhost:1313/blog/tags/gold/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/gold/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hidden-Markov-Models</title>
+      <link>http://localhost:1313/blog/tags/hidden-markov-models/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/hidden-markov-models/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Quantitative-Analysis</title>
+      <link>http://localhost:1313/blog/tags/quantitative-analysis/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/quantitative-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>R</title>
+      <link>http://localhost:1313/blog/tags/r/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/r/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technical-Analysis</title>
+      <link>http://localhost:1313/blog/tags/technical-analysis/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/technical-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time-Series</title>
+      <link>http://localhost:1313/blog/tags/time-series/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/time-series/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trading</title>
+      <link>http://localhost:1313/blog/tags/trading/</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/trading/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>http://localhost:1313/blog/tags/ai/</link>
@@ -34,13 +83,6 @@
       <link>http://localhost:1313/blog/tags/investing/</link>
       <pubDate>Thu, 04 Sep 2025 10:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/tags/investing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Technical-Analysis</title>
-      <link>http://localhost:1313/blog/tags/technical-analysis/</link>
-      <pubDate>Thu, 04 Sep 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/tags/technical-analysis/</guid>
       <description></description>
     </item>
   </channel>

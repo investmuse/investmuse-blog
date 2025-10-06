@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technical-Analysis on InvestMuse Blog</title>
-    <link>http://localhost:1313/blog/tags/technical-analysis/</link>
-    <description>Recent content in Technical-Analysis on InvestMuse Blog</description>
+    <title>R on InvestMuse Blog</title>
+    <link>http://localhost:1313/blog/tags/r/</link>
+    <description>Recent content in R on InvestMuse Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Sep 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/technical-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Hidden Markov Model Analysis for Gold Historical Data</title>
       <link>http://localhost:1313/blog/posts/hidden-markov-gold-analysis/</link>
       <pubDate>Mon, 15 Sep 2025 10:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/posts/hidden-markov-gold-analysis/</guid>
       <description>&lt;style&gt;&#xA;img {&#xA;  max-height: 60vh !important;&#xA;  width: auto !important;&#xA;  max-width: 100% !important;&#xA;  object-fit: contain !important;&#xA;  display: block !important;&#xA;  margin: 0 auto !important;&#xA;}&#xA;figcaption {&#xA;  text-align: center !important;&#xA;  font-style: italic !important;&#xA;  color: #666 !important;&#xA;  margin: 0.5rem auto 1.5rem auto !important;&#xA;  font-size: 0.9rem !important;&#xA;}&#xA;&lt;/style&gt;&#xA;&lt;p&gt;What is &amp;ldquo;Hidden States&amp;rdquo; concept? Why are the states &amp;ldquo;Hidden&amp;rdquo; and not observable? How can we foresee the states in Candlestick Chart data with the power of mathematics?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>How InvestMuse Transforms Investment Analysis: From Daily Hot Picks to AI-Powered Financial Insights</title>
-      <link>http://localhost:1313/blog/posts/introducing-investmuse/</link>
-      <pubDate>Thu, 04 Sep 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/posts/introducing-investmuse/</guid>
-      <description>Discover how InvestMuse transforms investment analysis with AI-powered insights, daily market opportunities, and institutional-grade tools for everyday investors.</description>
     </item>
   </channel>
 </rss>

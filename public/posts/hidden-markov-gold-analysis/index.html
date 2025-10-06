@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+    <title>A Hidden Markov Model Analysis for Gold Historical Data - InvestMuse Blog</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #F6F6F6; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            border: 1px solid #00B8A9; 
+        }
+        .header { 
+            background: #00B8A9; 
+            color: white; 
+            padding: 1rem; 
+            margin: -2rem -2rem 2rem -2rem; 
+        }
+        .btn { 
+            background: #00B8A9; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        a { color: #00B8A9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>InvestMuse Blog</h1>
+            <nav>
+                <a href="/blog/" style="color: white; margin-right: 20px;">Home</a>
+                <a href="https://investmuse.io" style="color: white;">InvestMuse App</a>
+            </nav>
+        </div>
+        
+  <h1>A Hidden Markov Model Analysis for Gold Historical Data</h1>
+
+  
+  
+  <time datetime="2025-09-15T10:00:00&#43;00:00">September 15, 2025</time>
+
+  <style>
+img {
+  max-height: 60vh !important;
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+figcaption {
+  text-align: center !important;
+  font-style: italic !important;
+  color: #666 !important;
+  margin: 0.5rem auto 1.5rem auto !important;
+  font-size: 0.9rem !important;
+}
+</style>
+<p>What is &ldquo;Hidden States&rdquo; concept? Why are the states &ldquo;Hidden&rdquo; and not observable? How can we foresee the states in Candlestick Chart data with the power of mathematics?</p>
+<figure>
+<img src="/images/gold-market-regimes-timeline.png" alt="Gold Market Regimes Timeline">
+<figcaption>Market Regimes by Years (Steady State, Walking on Ice, Crisis, Inflation)</figcaption>
+</figure>
+<h2 id="understanding-hidden-market-regimes">Understanding Hidden Market Regimes</h2>
+<p>In a <strong>Hidden Markov Model (HMM)</strong>, the model identifies underlying &ldquo;hidden&rdquo; regimes or states in the data that may not be immediately obvious from any individual data point. When you look at an individual row for a specific date, you see just the observable data (like price or volume), but it&rsquo;s not always clear which market regime that data point belongs to. The HMM, on the other hand, learns from the entire dataset, finding patterns in the data sequence to infer the most probable hidden state (like bull, bear, strong bull, etc.) over time.</p>
+<p>So, the model doesn&rsquo;t just look at a single data point but instead interprets patterns across a sequence of data. By understanding the transitions and probabilities of moving from one regime to another, the HMM can recognize when the market is likely in a &ldquo;bullish&rdquo; or &ldquo;bearish&rdquo; phase, even if a single day&rsquo;s data might not clearly indicate this.</p>
+<h2 id="the-historical-foundation-of-markov-models">The Historical Foundation of Markov Models</h2>
+<p>The Markov Chain concept was introduced by the Russian mathematician <strong>Andrey Markov</strong> in the early 20th century, but his original motivation was actually not about financial time series or even time series analysis in general. Instead, Markov chains were initially devised to explore sequences of events with probabilistic dependencies — especially in systems where each event&rsquo;s probability depends on the previous event. His main goal was to challenge the prevailing view at the time that only independent events, like coin tosses, could be analyzed statistically.</p>
+<h3 id="markovs-motivation">Markov&rsquo;s Motivation</h3>
+<p>Markov&rsquo;s initial experiments in 1906 used sequences of letters in poems to analyze patterns in a series where each letter&rsquo;s probability could depend on the previous letter. His purpose was to show that mathematical analysis could be applied to dependent events as well, rather than just independent events. Markov introduced Markov chains to describe sequences of events where the probability of each event depends only on the state of the previous event. This property is now known as the <strong>Markov property</strong> (or &ldquo;memorylessness&rdquo;).</p>
+<p>Markov famously demonstrated his theory using a sequence of letters in the Russian poem &ldquo;Eugene Onegin&rdquo; by Alexander Pushkin. By analyzing the occurrence of vowels and consonants, he showed that the likelihood of one type of letter following another was not independent. This analysis proved that statistical tools could handle sequential dependencies.</p>
+<h3 id="evolution-to-time-series-and-the-big-picture">Evolution to Time Series and the &ldquo;Big Picture&rdquo;</h3>
+<p>Over time, the Markov model was adapted and extended, leading to tools like the Hidden Markov Model (HMM), which allowed statisticians and scientists to infer unobserved states (like &ldquo;bullish&rdquo; or &ldquo;bearish&rdquo; market regimes) from observable data (such as daily prices).</p>
+<h2 id="why-time-series-applications-are-suitable-for-markov-models">Why Time Series Applications are Suitable for Markov Models</h2>
+<p><strong>1. Sequential Dependency:</strong> Many time series, including stock prices, weather patterns, and economic indicators, exhibit dependency where the next value or state is influenced by the current or previous states — perfect for the Markov property.</p>
+<p><strong>2. Hidden Structure:</strong> In financial markets, there are often underlying &ldquo;hidden&rdquo; forces (e.g., economic cycles, sentiment shifts) that influence observable data. The Hidden Markov Model allows for identifying these hidden regimes.</p>
+<p><strong>3. Pattern Detection:</strong> By observing sequences over time, HMMs can help uncover long-term trends or regime shifts that aren&rsquo;t obvious from individual data points. This &ldquo;big picture&rdquo; is what financial analysts are often interested in.</p>
+<p>Following Markov&rsquo;s discrete-time work, researchers extended the model to continuous-time Markov chains. These models describe systems that change state continuously over time, which is valuable in physics, biology, and queueing theory.</p>
+<p>By the mid-20th century, Markov chains were applied to weather prediction. Early meteorologists used Markov models to estimate the likelihood of weather conditions, like sunny or rainy days, based on the previous day&rsquo;s weather. This application showed how Markov chains could forecast future states, making them practical for predicting time series trends.</p>
+<h2 id="gold-data-analysis">Gold Data Analysis</h2>
+<p>Below R code creates a Hidden Markov Model (HMM) for identifying and visualizing market regimes in daily gold data, classified into four market states. Here&rsquo;s a step-by-step guide to understanding each part of the code and experimenting with various parameters to fine-tune the model for different outcomes:</p>
+<h3 id="step-1-setting-up-libraries-and-data">Step 1: Setting Up Libraries and Data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># Ensure required libraries are installed and loaded</span>
+</span></span><span style="display:flex;"><span>packages <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;depmixS4&#34;</span>, <span style="color:#e6db74">&#34;TTR&#34;</span>, <span style="color:#e6db74">&#34;quantmod&#34;</span>, <span style="color:#e6db74">&#34;tidyverse&#34;</span>, <span style="color:#e6db74">&#34;expm&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (pkg <span style="color:#66d9ef">in</span> packages) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">require</span>(pkg, character.only <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">install.packages</span>(pkg, dependencies <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">library</span>(pkg, character.only <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get Gold Price data from Yahoo</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getSymbols</span>(<span style="color:#e6db74">&#34;GC=F&#34;</span>, src <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yahoo&#34;</span>, from <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2000-01-01&#34;</span>, to <span style="color:#f92672">=</span> <span style="color:#a6e22e">Sys.Date</span>())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">&lt;-</span> data <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mutate</span>(
+</span></span><span style="display:flex;"><span>    Returns <span style="color:#f92672">=</span> <span style="color:#a6e22e">log</span>(Close <span style="color:#f92672">/</span> <span style="color:#a6e22e">lag</span>(Close)),
+</span></span><span style="display:flex;"><span>    RSI <span style="color:#f92672">=</span> TTR<span style="color:#f92672">::</span><span style="color:#a6e22e">RSI</span>(Close, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>),
+</span></span><span style="display:flex;"><span>    Volatility <span style="color:#f92672">=</span> TTR<span style="color:#f92672">::</span><span style="color:#a6e22e">volatility</span>(Close, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>, calc <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;close&#34;</span>)
+</span></span><span style="display:flex;"><span>  ) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">na.omit</span>()
+</span></span></code></pre></div><p>Here:</p>
+<ul>
+<li><strong>Returns:</strong> Measures daily returns</li>
+<li><strong>RSI (Relative Strength Index):</strong> Indicates overbought or oversold conditions</li>
+<li><strong>Volatility:</strong> Shows price fluctuations over a rolling 14-day period</li>
+</ul>
+<h3 id="step-2-defining-the-hmm-model">Step 2: Defining the HMM Model</h3>
+<p>The model is created with 4 states, each representing a possible market regime (e.g., strong bear, weak bear, weak bull, strong bull). Each state is defined by Gaussian distributions of Returns, RSI, and Volatility:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>hmm_model <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">depmix</span>(
+</span></span><span style="display:flex;"><span>  response <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(Returns <span style="color:#f92672">~</span> <span style="color:#ae81ff">1</span>, RSI <span style="color:#f92672">~</span> <span style="color:#ae81ff">1</span>, Volatility <span style="color:#f92672">~</span> <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>  data <span style="color:#f92672">=</span> data,
+</span></span><span style="display:flex;"><span>  nstates <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>  family <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>(<span style="color:#a6e22e">gaussian</span>(), <span style="color:#a6e22e">gaussian</span>(), <span style="color:#a6e22e">gaussian</span>())
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><strong>Tuning Parameters:</strong></p>
+<ul>
+<li><strong>Number of states (nstates):</strong> Increasing the number of states may capture more subtle nuances in market behavior but can lead to overfitting. Start with a lower number if uncertain.</li>
+<li><strong>Response variables:</strong> You could add or remove variables (like adding Momentum) to test different models.</li>
+</ul>
+<h3 id="step-3-setting-initial-transition-probabilities">Step 3: Setting Initial Transition Probabilities</h3>
+<p>The initial transition probabilities define the likelihood of transitioning between states. Here, each state has a high probability (0.85) of remaining in the same state:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>init_transitions <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0.85</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#75715e"># Row 1</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.85</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#75715e"># Row 2</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.85</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#75715e"># Row 3</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.85</span>) <span style="color:#75715e"># Row 4</span>
+</span></span></code></pre></div><p>This setup emphasizes stability within each state, so the system tends to remain in a given regime unless there is a significant shift.</p>
+<p><strong>Experimentation:</strong></p>
+<ul>
+<li><strong>Increase/decrease self-transition probabilities (like 0.85):</strong> Lowering this value increases transitions to other states, simulating a more dynamic market.</li>
+<li><strong>Change transition probabilities between states:</strong> For example, increasing the transition from a weak bear to a weak bull could capture more frequent market reversals.</li>
+</ul>
+<h3 id="step-4-fitting-the-model">Step 4: Fitting the Model</h3>
+<p>The fit function optimizes model parameters for the given data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>hmm_fit <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fit</span>(hmm_model)
+</span></span></code></pre></div><h3 id="step-5-analyzing-the-transition-matrix-and-steady-states">Step 5: Analyzing the Transition Matrix and Steady States</h3>
+<p>The transition matrix describes the probabilities of moving from one state to another after the model is fitted. Additionally, we compute steady states to see the long-term probability of each regime:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>transition_matrix <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#a6e22e">getpars</span>(hmm_fit)<span style="color:#a6e22e">[seq_len</span>(<span style="color:#ae81ff">4</span>^2)], nrow <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, byrow <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span><span style="display:flex;"><span>steady_states <span style="color:#f92672">&lt;-</span> (transition_matrix <span style="color:#f92672">%^%</span> <span style="color:#ae81ff">100</span>)[1, ]
+</span></span></code></pre></div><h3 id="step-6-predicting-states-and-visualizing">Step 6: Predicting States and Visualizing</h3>
+<p>Finally, we extract and plot the state (regime) assignments for each data point:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>states <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">posterior</span>(hmm_fit)<span style="color:#f92672">$</span>state
+</span></span><span style="display:flex;"><span>data<span style="color:#f92672">$</span>State <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(states, labels <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Strong Bear&#34;</span>, <span style="color:#e6db74">&#34;Weak Bear&#34;</span>, <span style="color:#e6db74">&#34;Weak Bull&#34;</span>, <span style="color:#e6db74">&#34;Strong Bull&#34;</span>))
+</span></span></code></pre></div><p>Each state is visualized with different colors to show the market&rsquo;s changing behavior over time:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Adjusted, color <span style="color:#f92672">=</span> State, group <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scale_color_manual</span>(values <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Strong Bear&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;red&#34;</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;Weak Bear&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;orange&#34;</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;Weak Bull&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yellow&#34;</span>,
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;Strong Bull&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;green&#34;</span>)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">labs</span>(title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Price with Hidden Market Regimes&#34;</span>,
+</span></span><span style="display:flex;"><span>       x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>,
+</span></span><span style="display:flex;"><span>       y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Price&#34;</span>,
+</span></span><span style="display:flex;"><span>       color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Market Regime&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">theme_minimal</span>()
+</span></span></code></pre></div><figure>
+<img src="/images/gold-price-hidden-regimes.png" alt="Gold Price with Hidden Market Regimes">
+<figcaption>Gold Price Data Market Regimes after 2000</figcaption>
+</figure>
+<h2 id="considerations-and-experimentation-tips">Considerations and Experimentation Tips</h2>
+<ul>
+<li>
+<p><strong>Number of States:</strong> Adding more states may identify specific patterns (e.g., volatile uptrends) but can increase complexity.</p>
+</li>
+<li>
+<p><strong>Response Variables:</strong> Experiment with different variables (e.g., Momentum, Moving Average) for tailored insights.</p>
+</li>
+<li>
+<p><strong>Transition Probabilities:</strong> Customize the transition matrix based on expected market behaviors (e.g., sudden drops in volatile markets).</p>
+</li>
+</ul>
+<p>This model provides a simplified method for identifying market regimes, allowing for deeper analyses and potential strategy testing based on state transitions. Experimenting with parameters will provide insights into the model&rsquo;s sensitivity and relevance to different market conditions.</p>
+<hr>
+<p><em>This analysis demonstrates how mathematical models originally developed for analyzing poetry can be applied to modern financial markets, revealing hidden patterns that guide investment decisions.</em></p>
+<!-- Force rebuild -->
+
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/blog/tags/gold/">Gold</a></li>
+        <li><a href="/blog/tags/hidden-markov-models/">Hidden-Markov-Models</a></li>
+        <li><a href="/blog/tags/quantitative-analysis/">Quantitative-Analysis</a></li>
+        <li><a href="/blog/tags/trading/">Trading</a></li>
+        <li><a href="/blog/tags/technical-analysis/">Technical-Analysis</a></li>
+        <li><a href="/blog/tags/r/">R</a></li>
+        <li><a href="/blog/tags/time-series/">Time-Series</a></li>
+    </ul>
+  </div>
+
+
+    </div>
+</body>
+</html>

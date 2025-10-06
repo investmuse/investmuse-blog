@@ -2,13 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/blog/posts/hidden-markov-gold-analysis/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/categories/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/gold/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/hidden-markov-models/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/categories/market-research/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/categories/quantitative-analysis/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/quantitative-analysis/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/r/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/technical-analysis/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/time-series/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/trading/</loc>
+    <lastmod>2025-09-15T10:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/blog/tags/ai/</loc>
     <lastmod>2025-09-04T10:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/tags/analysis/</loc>
-    <lastmod>2025-09-04T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/categories/</loc>
     <lastmod>2025-09-04T10:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/tags/fintech/</loc>
@@ -23,19 +62,7 @@
     <loc>http://localhost:1313/blog/categories/investment-technology/</loc>
     <lastmod>2025-09-04T10:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2025-09-04T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/posts/</loc>
-    <lastmod>2025-09-04T10:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/categories/product-features/</loc>
-    <lastmod>2025-09-04T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/tags/</loc>
-    <lastmod>2025-09-04T10:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/tags/technical-analysis/</loc>
     <lastmod>2025-09-04T10:00:00+00:00</lastmod>
   </url>
 </urlset>
