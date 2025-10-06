@@ -15,7 +15,7 @@ theme = 'investmuse'
   images = [""]
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
-  gitUrl = "https://github.com/serhatakay-lab/investmuse-blog/commit/"
+  gitUrl = "https://github.com/investmuse/investmuse-blog/commit/"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
